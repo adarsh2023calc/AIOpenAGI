@@ -1,0 +1,3 @@
+[console_scripts]
+xorbits-supervisor = xorbits.supervisor:main
+xorbits-worker = xorbits.worker:main

@@ -1,0 +1,199 @@
+Metadata-Version: 2.1
+Name: xorbits
+Version: 0.7.4
+Summary: Scalable Python data science, in an API compatible & lightning fast way.
+Home-page: http://github.com/xorbitsai/xorbits
+Author: Qin Xuye
+Author-email: qinxuye@xprobe.io
+Maintainer: Qin Xuye
+Maintainer-email: qinxuye@xprobe.io
+License: Apache License 2.0
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development :: Libraries
+Description-Content-Type: text/markdown
+Requires-Dist: xoscar>=0.0.8
+Requires-Dist: numpy<2.0.0,>=1.14.0
+Requires-Dist: pandas>=1.0.0
+Requires-Dist: pyyaml>=5.1
+Requires-Dist: psutil>=5.9.0
+Requires-Dist: tornado>=6.0
+Requires-Dist: sqlalchemy>=1.2.0
+Requires-Dist: defusedxml>=0.5.0
+Requires-Dist: tqdm>=4.1.0
+Requires-Dist: pyarrow>=5.0.0
+Requires-Dist: fsspec!=2022.8.0,>=2022.7.1
+Requires-Dist: cloudpickle>=1.5.0; python_version < "3.11"
+Requires-Dist: cloudpickle>=2.2.1; python_version >= "3.11"
+Requires-Dist: uvloop>=0.14.0; sys_platform != "win32"
+Requires-Dist: scipy>=1.0.0; sys_platform != "win32" or python_version >= "3.10"
+Requires-Dist: scikit-learn>=1.1.3; sys_platform != "win32" or python_version >= "3.10"
+Requires-Dist: scipy<=1.9.1,>=1.0.0; sys_platform == "win32" and python_version < "3.10"
+Requires-Dist: scikit-learn<=1.1.2,>=0.20; sys_platform == "win32" and python_version < "3.10"
+Provides-Extra: aws
+Requires-Dist: s3fs; extra == "aws"
+Provides-Extra: azure
+Requires-Dist: adlfs; extra == "azure"
+Provides-Extra: datasets
+Requires-Dist: datasets; extra == "datasets"
+Provides-Extra: dev
+Requires-Dist: cython>=0.29; extra == "dev"
+Requires-Dist: ipython>=6.5.0; extra == "dev"
+Requires-Dist: pytest>=3.5.0; extra == "dev"
+Requires-Dist: pytest-cov>=2.5.0; extra == "dev"
+Requires-Dist: pytest-timeout>=1.2.0; extra == "dev"
+Requires-Dist: pytest-forked>=1.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.14.0; extra == "dev"
+Requires-Dist: pytest-mock>=3.11.1; extra == "dev"
+Requires-Dist: sphinx; extra == "dev"
+Requires-Dist: pydata-sphinx-theme>=0.3.0; extra == "dev"
+Requires-Dist: sphinx-intl>=0.9.9; extra == "dev"
+Requires-Dist: flake8>=3.8.0; extra == "dev"
+Requires-Dist: xgboost>=1.3.0; extra == "dev"
+Requires-Dist: lightgbm>=3.3.5; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: matplotlib; extra == "dev"
+Requires-Dist: datasets; extra == "dev"
+Provides-Extra: doc
+Requires-Dist: sphinx; extra == "doc"
+Requires-Dist: pydata-sphinx-theme>=0.3.0; extra == "doc"
+Requires-Dist: sphinx-intl>=0.9.9; extra == "doc"
+Requires-Dist: matplotlib; extra == "doc"
+Provides-Extra: extra
+Requires-Dist: pillow>=7.0.0; extra == "extra"
+Requires-Dist: lz4>=1.0.0; extra == "extra"
+Requires-Dist: numexpr>=2.6.4; extra == "extra"
+Provides-Extra: jax
+Requires-Dist: jax>=0.4.0; sys_platform != "win32" and extra == "jax"
+Requires-Dist: jaxlib>=0.4.0; sys_platform != "win32" and extra == "jax"
+Provides-Extra: kubernetes
+Requires-Dist: kubernetes>=10.0.0; extra == "kubernetes"
+Provides-Extra: ray
+Requires-Dist: ray>=1.8.0; extra == "ray"
+Provides-Extra: vineyard
+Requires-Dist: vineyard>=0.3; sys_platform != "win32" and extra == "vineyard"
+
+<div align="center">
+  <img width="77%" alt="" src="https://xorbits.readthedocs.io/en/latest/_static/xorbits.svg"><br>
+</div>
+
+[![PyPI Latest Release](https://img.shields.io/pypi/v/xorbits.svg?style=for-the-badge)](https://pypi.org/project/xorbits/)
+[![License](https://img.shields.io/pypi/l/xorbits.svg?style=for-the-badge)](https://github.com/xorbitsai/xorbits/blob/main/LICENSE)
+[![Coverage](https://img.shields.io/codecov/c/github/xorbitsai/xorbits?style=for-the-badge)](https://codecov.io/gh/xorbitsai/xorbits)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/xorbitsai/xorbits/python.yaml?branch=main&style=for-the-badge&label=GITHUB%20ACTIONS&logo=github)](https://actions-badge.atrox.dev/xorbitsai/xorbits/goto?ref=main)
+[![Doc](https://readthedocs.org/projects/xorbits/badge/?version=latest&style=for-the-badge)](https://xorbits.readthedocs.io/)
+[![Slack](https://img.shields.io/badge/join_Slack-781FF5.svg?logo=slack&style=for-the-badge)](https://join.slack.com/t/xorbitsio/shared_invite/zt-1o3z9ucdh-RbfhbPVpx7prOVdM1CAuxg)
+[![Twitter](https://img.shields.io/twitter/follow/xorbitsio?logo=twitter&style=for-the-badge)](https://twitter.com/xorbitsio)
+
+## What is Xorbits?
+
+Xorbits is an open-source computing framework that makes it easy to scale data science and machine learning workloads —
+from data preprocessing to tuning, training, and model serving. Xorbits can leverage multi-cores or GPUs to accelerate
+computation on a single machine or scale out up to thousands of machines to support processing terabytes of data and training or serving large models.
+
+Xorbits provides a suite of best-in-class [libraries](https://xorbits.readthedocs.io/en/latest/libraries/index.html) for data
+scientists and machine learning practitioners. Xorbits provides the capability to scale tasks without the necessity for
+extensive knowledge of infrastructure.
+
+Xorbits features a familiar Python API that supports a variety of libraries, including pandas, NumPy, PyTorch,
+XGBoost, etc. With a simple modification of just one line of code, your pandas workflow can be seamlessly scaled
+using Xorbits:
+
+<div align="center">
+  <img width="70%" alt="" src="https://raw.githubusercontent.com/xorbitsai/xorbits/main/doc/source/_static/pandas_vs_xorbits.gif"><br>
+</div>
+
+## Why Xorbits?
+
+As ML and AI workloads continue to grow in complexity, the computational demands soar high. Even though single-node development
+environments like your laptop provide convenience, but they fall short when it comes to accommodating these scaling demands. 
+
+### Seamlessly scale your workflow from laptop to cluster
+
+To use Xorbits, you do not need to specify how to distribute the data or even know how many cores your system has.
+You can keep using your existing notebooks and still enjoy a significant speed boost from Xorbits, even on your laptop.
+
+### Process large datasets that pandas can't
+
+Xorbits can [leverage all of your computational cores](https://xorbits.readthedocs.io/en/latest/getting_started/why_xorbits/pandas.html#boosting-performance-and-scalability-with-xorbits). 
+It is especially beneficial for handling [larger datasets](https://xorbits.readthedocs.io/en/latest/getting_started/why_xorbits/pandas.html#overcoming-memory-limitations-in-large-datasets-with-xorbits),
+where pandas may slow down or run out of memory.
+
+### Lightning-fast speed
+
+According to our benchmark tests, Xorbits surpasses other popular pandas API frameworks in speed and scalability. 
+See our [performance comparison](https://xorbits.readthedocs.io/en/latest/getting_started/why_xorbits/comparisons.html#performance-comparison)
+, [explanation](https://xorbits.readthedocs.io/en/latest/getting_started/why_xorbits/fast.html) and [research paper](https://arxiv.org/abs/2401.00865).
+
+### Leverage the Python ecosystem with native integrations
+
+Xorbits aims to take full advantage of the entire ML ecosystem, offering native integration with pandas and other libraries.
+
+## Where to get it?
+The source code is currently hosted on GitHub at: https://github.com/xorbitsai/xorbits
+
+Binary installers for the latest released version are available at the [Python
+Package Index (PyPI)](https://pypi.org/project/xorbits).
+
+```shell
+# PyPI
+pip install xorbits
+```
+
+## Other resources
+* [Documentation](https://xorbits.readthedocs.io)
+* [Performance Benchmarks](https://xorbits.readthedocs.io/en/latest/getting_started/why_xorbits/comparisons.html#performance-comparison)
+* [Development Guide](https://xorbits.readthedocs.io/en/latest/development/index.html)
+* [Research Paper on Xorbits' Internals](https://arxiv.org/abs/2401.00865)
+
+## License
+[Apache 2](LICENSE)
+
+## Roadmaps
+The main goals we want to achieve in the future include the following:
+
+* Transitioning from pandas native to arrow native for data storage  
+  will reduce the memory cost substantially and is more friendly for compute engine.
+* Introducing native engines that leverage technologies like vectorization and codegen 
+  to accelerate computations.
+* Scale as many libraries and algorithms as possible!
+
+More detailed roadmaps will be revealed soon. Stay tuned!
+
+## Relationship with Mars
+The creators of Xorbits are mainly those of Mars, and we currently built Xorbits on Mars 
+to reduce duplicated work, but the vision of Xorbits suggests that it's not 
+appropriate to put everything on Mars. Instead, we need a new project 
+to support the roadmaps better. In the future, we will replace some core internal components 
+with other upcoming ones we will propose. Stay tuned!
+
+## Getting involved
+
+| Platform                                                                                      | Purpose                                            |
+|-----------------------------------------------------------------------------------------------|----------------------------------------------------|
+| [Github Issues](https://github.com/xorbitsai/xorbits/issues)                                  | Reporting bugs and filing feature requests.        |
+| [StackOverflow](https://stackoverflow.com/questions/tagged/xorbits)                           | Asking questions about how to use Xorbits.         |
+| [Slack](https://join.slack.com/t/xorbitsio/shared_invite/zt-1o3z9ucdh-RbfhbPVpx7prOVdM1CAuxg) | Collaborating with other Xorbits users.            |
+
+## Citing Xorbits
+
+If Xorbits could help you, please cite our paper using the following metadata:
+
+```
+@inproceedings{lu2024Xorbits,
+  title = {Xorbits: Automating Operator Tiling for Distributed Data Science},
+  shorttitle = {Xorbits},
+  booktitle = {2024 {{IEEE}} 40th {{International Conference}} on {{Data Engineering}} ({{ICDE}})},
+  author = {Lu, Weizheng and He, Kaisheng and Qin, Xuye and Li, Chengjie and Wang, Zhong and Yuan, Tao and Liao, Xia and Zhang, Feng and Chen, Yueguo and Du, Xiaoyong},
+  year = {2024},
+  month = may,
+  pages = {5211--5223},
+  issn = {2375-026X},
+  doi = {10.1109/ICDE60146.2024.00392},
+}
+```

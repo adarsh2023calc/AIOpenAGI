@@ -1,0 +1,3 @@
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:root:Using Chroma persistent client with path: /tmp/openagi
+INFO:root:Session ID initialized: 22302ee5aaf5477cb0c1cc26b704792c
